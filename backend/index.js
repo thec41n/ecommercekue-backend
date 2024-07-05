@@ -27,7 +27,7 @@ const corsOptions = {
   origin: 'https://kueyanti.vercel.app',
   optionsSuccessStatus: 200,
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true //
+  credentials: true
 };
 
 app.use(cors(corsOptions));
