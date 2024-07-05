@@ -3,7 +3,7 @@ import path from "path";
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
-const cors = require('cors');
+import cors from "cors";
 
 // utils
 import connectDB from "./config/db.js";
