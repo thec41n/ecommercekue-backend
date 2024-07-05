@@ -3,6 +3,7 @@ import path from "path";
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+const cors = require('cors');
 
 // utils
 import connectDB from "./config/db.js";
@@ -22,6 +23,12 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+const corsOptions = {
+  origin: 'https://ecommercekue-backend-production.up.railway.app',
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 
 app.use("/api/users", userRoutes);
 app.use("/api/category", categoryRoutes);
