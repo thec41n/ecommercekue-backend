@@ -16,30 +16,33 @@ connectDB();
 
 const app = express();
 
+// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+// CORS configuration
 const allowedOrigins = ['http://localhost:5173', 'https://kueyanti.vercel.app'];
 app.use(cors({
   origin: allowedOrigins,
   credentials: true,
 }));
 
-app.use(cors(corsOptions));
-
+// Routes
 app.use("/api/users", userRoutes);
 app.use("/api/category", categoryRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/upload", uploadRoutes);
 app.use("/api/orders", orderRoutes);
 
+// Endpoint untuk mendapatkan konfigurasi Midtrans
 app.get("/api/config/midtrans", (req, res) => {
   res.send({
     clientKey: process.env.MIDTRANS_CLIENT_KEY,
   });
 });
 
+// Static folder untuk uploads
 const __dirname = path.resolve();
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
