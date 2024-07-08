@@ -1,9 +1,7 @@
-import path from "path";
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
-import cors from "cors";
-
+import cors from 'cors';
 import connectDB from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
@@ -22,12 +20,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-const corsOptions = {
-  origin: 'https://kueyanti.vercel.app',
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+const allowedOrigins = ['http://localhost:5173', 'https://kueyanti.vercel.app'];
+app.use(cors({
+  origin: allowedOrigins,
   credentials: true,
-  optionsSuccessStatus: 200
-};
+}));
 
 app.use(cors(corsOptions));
 

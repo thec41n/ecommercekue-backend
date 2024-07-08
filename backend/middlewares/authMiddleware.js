@@ -14,12 +14,12 @@ const authenticate = asyncHandler(async(req, res, next) => {
             req.user = await User.findById(decoded.userId).select("-password");
             next();
         } catch(error) {
-            res.status(401)
-            throw new Error("Tidak terautentikasi. Token gagal")
+            res.status(401);
+            throw new Error("Tidak terautentikasi. Token gagal");
         }
     } else {
-        res.status(401)
-        throw new Error("Mohon maaf anda tidak terautentikasi.")
+        res.status(401);
+        throw new Error("Mohon maaf anda tidak terautentikasi.");
     }
 });
 
@@ -28,8 +28,8 @@ const authorizeAdmin = (req, res, next) => {
     if(req.user && req.user.isAdmin) {
         next();
     } else {
-        res.status(401).send("Anda bukan Admin!")
+        res.status(401).send("Anda bukan Admin!");
     }
-}
+};
 
 export { authenticate, authorizeAdmin };
