@@ -46,7 +46,6 @@ const getFormattedDate = () => {
 
 const uploadToGCS = async (req, res, next) => {
   if (!req.file) {
-    console.log('No file received');
     return res.status(400).json({ message: 'No file uploaded' });
   }
 
@@ -71,7 +70,6 @@ const uploadToGCS = async (req, res, next) => {
     blobStream.on('finish', () => {
       req.file.cloudStorageObject = blob.name;
       req.file.cloudStoragePublicUrl = getPublicUrl(blob.name);
-      console.log('File is accessible at:', req.file.cloudStoragePublicUrl);
       next();
     });
 

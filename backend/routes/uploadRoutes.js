@@ -63,10 +63,9 @@ const router = express.Router();
 // });
 
 router.post('/', authenticate, upload.single('image'), uploadToGCS, (req, res) => {
-  console.log('Route handler called');
   if (req.file && req.file.cloudStoragePublicUrl) {
     res.status(200).json({
-      message: 'Upload was successful',
+      message: 'Gambar Berhasil Diupload!',
       url: req.file.cloudStoragePublicUrl
     });
   } else {
