@@ -11,7 +11,8 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const keyFilename = process.env.GCP_KEYFILE_PATH || path.join(__dirname, "../config/kueyanti-project-d52f6867be18.json");
+const keyFilename = "/tmp/kueyanti-project-d52f6867be18.json";
+fs.writeFileSync(keyFilePath, process.env.GCP_KEYFILE_PATH);
 
 const storage = new Storage({ keyFilename });
 const bucketName = 'uploads-kueyanti';

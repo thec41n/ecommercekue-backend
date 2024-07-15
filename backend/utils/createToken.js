@@ -5,7 +5,7 @@ const generateToken = (res, userId) => {
     expiresIn: "30d",
   });
 
-  console.log("Generated Token:", token); // Debug log
+  console.log("Generated Token:", token);
 
   res.cookie('jwt', token, {
     httpOnly: true,
