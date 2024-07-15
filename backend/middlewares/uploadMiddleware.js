@@ -12,10 +12,10 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const keyFilename = "/tmp/kueyanti-project-d52f6867be18.json";
+const keyFilePath = "/tmp/kueyanti-project-d52f6867be18.json";
 fs.writeFileSync(keyFilePath, process.env.GCP_KEYFILE_PATH);
 
-const storage = new Storage({ keyFilename });
+const storage = new Storage({ keyFilename: keyFilePath });
 const bucketName = 'uploads-kueyanti';
 const bucket = storage.bucket(bucketName);
 
