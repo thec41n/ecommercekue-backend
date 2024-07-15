@@ -1,10 +1,14 @@
 import { Storage } from "@google-cloud/storage";
 import multer from "multer";
 import path from "path";
+import { fileURLToPath } from "url";
 import sharp from "sharp";
 import dotenv from "dotenv";
 
 dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const keyFilename =
   process.env.GCP_KEYFILE_PATH ||
